@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS chicken
     notes           varchar
 );
 
-\COPY farm FROM './data-farms.csv' CSV HEADER;
-\COPY chicken FROM './data-chickens.csv' CSV HEADER;
+\COPY farm FROM './cmudb/extensions/db721_fdw/data-farms.csv' CSV HEADER;
+\COPY chicken FROM './cmudb/extensions/db721_fdw/data-chickens.csv' CSV HEADER;
 
 CREATE EXTENSION IF NOT EXISTS db721_fdw;
 CREATE SERVER IF NOT EXISTS db721_server FOREIGN DATA WRAPPER db721_fdw;
@@ -30,7 +30,8 @@ CREATE FOREIGN TABLE IF NOT EXISTS db721_farm
     max_age_weeks   real
 ) SERVER db721_server OPTIONS
 (
-    filename '/home/kapi/git/postgres/data-farms.db721',
+--    filename '/home/kapi/git/postgres/data-farms.db721',
+    filename '/home/ubuntu/postgres/cmudb/extensions/db721_fdw/data-farms.db721',
     tablename 'Farm'
 );
 CREATE FOREIGN TABLE IF NOT EXISTS db721_chicken (
@@ -43,6 +44,7 @@ CREATE FOREIGN TABLE IF NOT EXISTS db721_chicken (
     notes           varchar
 ) SERVER db721_server OPTIONS
 (
-    filename '/home/kapi/git/postgres/data-chickens.db721',
+--    filename '/home/kapi/git/postgres/data-chickens.db721',
+    filename '/home/ubuntu/postgres/cmudb/extensions/db721_fdw/data-chickens.db721',
     tablename 'Chicken'
 );

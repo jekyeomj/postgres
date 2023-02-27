@@ -4,9 +4,9 @@ set -euxo pipefail
 
 BUILD_DIR="$(pwd)/build/postgres/"
 BIN_DIR="$(pwd)/build/postgres/bin/"
-POSTGRES_USER="noisepage_user"
-POSTGRES_PASSWORD="noisepage_pass"
-POSTGRES_DB="noisepage_db"
+POSTGRES_USER="jekyeomj"
+POSTGRES_PASSWORD="jjk_pass"
+POSTGRES_DB="jekyeomj_db"
 POSTGRES_PORT=15721
 
 if ! PGPASSWORD=${POSTGRES_PASSWORD} "${BIN_DIR}"/psql -U ${POSTGRES_USER} -d ${POSTGRES_DB} -p ${POSTGRES_PORT} -c "SELECT 1" >/dev/null; then
